@@ -8,7 +8,9 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 
 const container = document.getElementById('products')
 const modal = document.getElementById('modal')
+const searchInput = document.getElementById('searchInput')
 
+let products = []
 let currentId = null
 
 // 🍔 Hamburger toggle
@@ -16,18 +18,11 @@ document.getElementById('hamburger').onclick = () => {
   document.getElementById('nav').classList.toggle('active')
 }
 
-// 📦 Load products
-async function loadProducts() {
-  const { data, error } = await supabase.from('products').select('*')
-
-  if (error) {
-    container.innerHTML = `<p style="color:red">${error.message}</p>`
-    return
-  }
-
+// 🎨 Render products
+function renderProducts(productsToRender) {
   container.innerHTML = ''
 
-  data.forEach(product => {
+  productsToRender.forEach(product => {
     const card = document.createElement('div')
     card.className = 'card'
 
@@ -45,6 +40,28 @@ async function loadProducts() {
     container.appendChild(card)
   })
 }
+
+// 📦 Load products
+async function loadProducts() {
+  const { data, error } = await supabase.from('products').select('*')
+
+  if (error) {
+    container.innerHTML = `<p style="color:red">${error.message}</p>`
+    return
+  }
+
+  products = data
+  renderProducts(products)
+}
+
+// 🔍 Search products
+searchInput.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase()
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(searchTerm)
+  )
+  renderProducts(filteredProducts)
+})
 
 loadProducts()
 

@@ -23,6 +23,13 @@ header h2 {
   font-weight: 600;
 }
 
+#searchInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 250px;
+}
+
 nav {
   display: flex;
   gap: 25px;
