@@ -8,7 +8,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 
 const container = document.getElementById('products')
 const modal = document.getElementById('modal')
-const searchInput = document.getElementById('searchInput')
+const searchInput = document.getElementById('productSearch')
 
 let products = []
 let currentId = null
