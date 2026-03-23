@@ -24,6 +24,34 @@ document.getElementById('logoutBtn').onclick = async () => {
   window.location.href = 'index.html'
 }
 
+// Load user info
+async function loadUserInfo() {
+  const { data: { user }, error: userError } = await supabase.auth.getUser()
+
+  if (userError || !user) {
+    document.getElementById('userName').textContent = 'Error loading'
+    document.getElementById('userEmail').textContent = 'Error loading'
+    return
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from('profiles')
+    .select('name, email')
+    .eq('email', user.email)
+    .single()
+
+  if (profileError || !profile) {
+    document.getElementById('userName').textContent = 'Not found'
+    document.getElementById('userEmail').textContent = 'Not found'
+    return
+  }
+
+  document.getElementById('userName').textContent = profile.name
+  document.getElementById('userEmail').textContent = profile.email
+}
+
+loadUserInfo()
+
 // Save new password
 document.getElementById('savePassword').onclick = async () => {
   const oldPass = document.getElementById('oldPassword').value
