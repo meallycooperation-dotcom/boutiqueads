@@ -1,0 +1,160 @@
+/* ----------------- GENERAL ----------------- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fa;
+  color: #333;
+}
+
+/* ----------------- HEADER ----------------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #e1e5e9;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hamburger:hover {
+  color: #e1e5e9;
+}
+
+/* ----------------- CONTAINER ----------------- */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.container h2 {
+  text-align: center;
+  margin-top: 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+/* ----------------- TABLE ----------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+thead th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+tbody td {
+  padding: 15px;
+  border-bottom: 1px solid #e1e5e9;
+  font-size: 14px;
+}
+
+tbody tr {
+  transition: background 0.3s ease;
+}
+
+tbody tr:hover {
+  background: #f8f9fa;
+}
+
+tbody tr.out-of-stock {
+  background: #ffe6e6;
+}
+
+tbody tr.out-of-stock:hover {
+  background: #ffcccc;
+}
+
+/* ----------------- MOBILE RESPONSIVE ----------------- */
+@media (max-width: 768px) {
+  header {
+    padding: 10px 15px;
+  }
+
+  header h2 {
+    font-size: 20px;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 250px;
+    padding: 20px 0;
+    gap: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .container {
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
+    overflow-x: auto;
+  }
+
+  .container h2 {
+    font-size: 20px;
+  }
+
+  table {
+    min-width: 600px;
+  }
+}

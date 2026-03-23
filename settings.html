@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings - Tajii Boutique</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+
+  <header>
+    <h2>Tajii Boutique</h2>
+    <nav id="nav">
+      <a href="home.html">Home</a>
+      <a href="addproduct.html">Add Products</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+    <div class="hamburger" id="hamburger">☰</div>
+  </header>
+
+  <div class="container">
+    <h2>Settings</h2>
+    
+    <button id="changePasswordBtn">Change Password</button>
+    <button id="logoutBtn" style="background:#e74c3c;">Logout</button>
+
+    <p id="message"></p>
+  </div>
+
+  <!-- Change Password Modal -->
+  <div class="modal" id="passwordModal">
+    <div class="modal-content">
+      <h3>Change Password</h3>
+      <input type="password" id="oldPassword" placeholder="Old Password">
+      <input type="password" id="newPassword" placeholder="New Password">
+      <input type="password" id="confirmPassword" placeholder="Confirm New Password">
+      <button id="savePassword">Save</button>
+      <button onclick="closePasswordModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script type="module" src="settings.js"></script>
+  <script>
+    document.getElementById('hamburger').onclick = () => {
+      document.getElementById('nav').classList.toggle('active')
+    }
+  </script>
+</body>
+</html>

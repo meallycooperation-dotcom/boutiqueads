@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Product - Tajii Boutique</title>
+  <link rel="stylesheet" href="addproduct.css">
+</head>
+<body>
+
+  <header>
+    <h2>Tajii Boutique</h2>
+    <nav id="nav">
+      <a href="home.html">Home</a>
+      <a href="addproduct.html">Add Products</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+    <div class="hamburger" id="hamburger">☰</div>
+  </header>
+
+  <div class="container">
+    <h2>Add New Product</h2>
+
+    <form id="productForm">
+      <input type="text" id="name" placeholder="Product Name" required>
+      <textarea id="description" placeholder="Product Description"></textarea>
+
+      <input type="number" id="price" placeholder="Price" required>
+      <input type="number" id="stockCount" placeholder="Stock Count" required>
+
+      <label>
+        <input type="checkbox" id="stock" checked> In Stock
+      </label>
+
+      <input type="file" id="image" accept="image/*" required>
+
+      <button type="submit">Upload Product</button>
+    </form>
+
+    <p id="message"></p>
+  </div>
+
+  <script type="module" src="addproduct.js"></script>
+  <script>
+    // Hamburger menu
+    document.getElementById('hamburger').onclick = () => {
+      document.getElementById('nav').classList.toggle('active')
+    }
+  </script>
+</body>
+</html>
