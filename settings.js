@@ -75,3 +75,33 @@ document.getElementById('savePassword').onclick = async () => {
   await supabase.auth.signOut()
   window.location.href = 'index.html'
 }
+
+const userNameSpan = document.getElementById('userName');
+const userEmailSpan = document.getElementById('userEmail');
+
+async function loadUserProfile() {
+  const { data: { user }, error: userError } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    message.textContent = 'Could not get user information.';
+    return;
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from('profiles')
+    .select('name, email')
+    .eq('email', user.email)
+    .single();
+
+  if (profileError) {
+    message.textContent = profileError.message;
+    return;
+  }
+
+  if (profile) {
+    userNameSpan.textContent = profile.name;
+    userEmailSpan.textContent = profile.email;
+  }
+}
+
+loadUserProfile();
