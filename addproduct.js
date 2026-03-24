@@ -16,6 +16,7 @@ form.addEventListener('submit', async (e) => {
   const description = document.getElementById('description').value
   const price = parseFloat(document.getElementById('price').value)
   const stockCount = parseInt(document.getElementById('stockCount').value)
+  const category = document.getElementById('category').value
   const imageFile = document.getElementById('image').files[0]
 
   if (!imageFile) {
@@ -53,7 +54,8 @@ form.addEventListener('submit', async (e) => {
           price,
           in_stock: inStock,
           stock_count: stockCount,
-          image_url: imageUrl
+          image_url: imageUrl,
+          category
         }
       ])
 
